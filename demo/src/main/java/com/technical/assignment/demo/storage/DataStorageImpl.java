@@ -9,7 +9,6 @@ public class DataStorageImpl implements DataStorage {
     TreeData[] treeDataArray;
 
     public void saveData(TreeData[] treeDataArray) {
-        for (TreeData t : treeDataArray) System.out.println(t);
         this.treeDataArray = treeDataArray;
     }
 
