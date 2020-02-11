@@ -5,11 +5,11 @@
 * [Examples](#examples)
 
 ## General info
-This project is simple service which fetches data from data.cityofnewyork.us and returns it processed.
+This project is a simple service which fetches data from data.cityofnewyork.us and returns it processed.
+So far it has 1 GET endpoint which takes coordinates and radius and return all trees in the following radius.
 
 ## Links
 Raw data set:
-
 https://data.cityofnewyork.us/resource/5rq2-4hqu.json
 
 Description of data set:
