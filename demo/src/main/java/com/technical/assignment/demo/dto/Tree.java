@@ -10,11 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TreeData {
+public class Tree {
     @JsonProperty("spc_common")
     private String treeType;
+
     @JsonProperty("x_sp")
     private Double xPosition;
+
     @JsonProperty("y_sp")
     private Double yPosition;
 }

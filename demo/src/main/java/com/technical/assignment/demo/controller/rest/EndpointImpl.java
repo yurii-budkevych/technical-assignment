@@ -1,6 +1,6 @@
 package com.technical.assignment.demo.controller.rest;
 
-import com.technical.assignment.demo.service.CountNearbyTreesUsecase;
+import com.technical.assignment.demo.service.TreeCountingUsecase;
 import com.technical.assignment.demo.service.CountNearbyTreesResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,14 +12,16 @@ import java.util.Map;
 public class EndpointImpl implements Endpoint {
 
     @Autowired
-    private CountNearbyTreesUsecase countNearbyTreesUsecase;
+    private TreeCountingUsecase treeCountingUsecase;
     @Autowired
     private CountNearbyTreesResponseBuilder countNearbyTreesResponseBuilder;
 
     public Response nearbyTrees(Double x, Double y, Double radius) {
-        Map<String, Integer> nearbyTrees = countNearbyTreesUsecase.countNearbyTreesByTypes(x, y, radius);
-        Response response = countNearbyTreesResponseBuilder.prepareResponse(nearbyTrees);
+        if (x == null || y == null || radius == null || radius < 0) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
 
-        return response;
+        Map<String, Integer> nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(x, y, radius);
+        return countNearbyTreesResponseBuilder.prepareResponse(nearbyTrees);
     }
 }

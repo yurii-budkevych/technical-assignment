@@ -14,7 +14,7 @@ public interface Endpoint {
     @GET
     @Path("/nearby-trees")
     @Produces(MediaType.APPLICATION_JSON)
-    Response nearbyTrees(@QueryParam("X") Double x,
-                         @QueryParam("Y") Double y,
+    Response nearbyTrees(@QueryParam("x") Double x,
+                         @QueryParam("y") Double y,
                          @QueryParam("radius") Double radius);
 }

@@ -1,7 +1,7 @@
 package com.technical.assignment.demo.service;
 
 import com.technical.assignment.demo.storage.TreeDataStorage;
-import com.technical.assignment.demo.dto.TreeData;
+import com.technical.assignment.demo.dto.Tree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,27 +9,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class CountNearbyTreesUsecase {
+public class TreeCountingUsecase {
 
     private final TreeDataStorage treeDataStorage;
 
-    public CountNearbyTreesUsecase(@Autowired TreeDataStorage treeDataStorage) {
+    public TreeCountingUsecase(@Autowired TreeDataStorage treeDataStorage) {
         this.treeDataStorage = treeDataStorage;
     }
 
-    public Map<String, Integer> countNearbyTreesByTypes(Double x, Double y, Double radius) {
-        Double radiusInFeets = meterToFeet(radius);
-        TreeData[] treeDataArray = treeDataStorage.getData();
-        Map<String, Integer> nearbyTrees = countNearbyTreesByTypes(treeDataArray, x, y, radiusInFeets);
+    public Map<String, Integer> countNearbyTreesByTypes(Double x, Double y, Double radiusInMeters) {
+        Double radiusInFeet = metersToFeet(radiusInMeters);
+        Tree[] treeArray = treeDataStorage.getData();
+        Map<String, Integer> nearbyTrees = countNearbyTreesByTypes(treeArray, x, y, radiusInFeet);
 
         return nearbyTrees;
     }
 
-    private Map<String, Integer> countNearbyTreesByTypes(TreeData[] treeData, Double x, Double y, Double radius) {
+    private Map<String, Integer> countNearbyTreesByTypes(Tree[] trees, Double x, Double y, Double radius) {
         Map<String, Integer> map = new HashMap<>();
-        if (treeData == null) return map;
+        if (trees == null) return map;
 
-        for (TreeData tree : treeData) {
+        for (Tree tree : trees) {
             double distance = Math.sqrt((tree.getXPosition() - x) * (tree.getXPosition() - x) + (tree.getYPosition() - y) * (tree.getYPosition() - y));
             if (distance <= radius) {
                 map.put(tree.getTreeType(), map.getOrDefault(tree.getTreeType(), 0) + 1);
@@ -39,7 +39,7 @@ public class CountNearbyTreesUsecase {
         return map;
     }
 
-    public Double meterToFeet(Double meters) {
+    private Double metersToFeet(Double meters) {
         double meterToFeetRatio = 3.28084d;
         return meterToFeetRatio * meters;
     }

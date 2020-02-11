@@ -1,18 +1,17 @@
 package com.technical.assignment.demo.storage;
 
-import com.technical.assignment.demo.dto.TreeData;
+import com.technical.assignment.demo.dto.Tree;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TreeDataStorageImpl implements TreeDataStorage {
 
-    private TreeData[] treeDataArray;
+    private Tree[] treeArray;
 
-    public void saveData(TreeData[] treeDataArray) {
-        this.treeDataArray = treeDataArray;
+    public void saveData(Tree[] treeArray) {
+        this.treeArray = treeArray;
     }
-
-    public TreeData[] getData() {
-        return treeDataArray;
+    public Tree[] getData() {
+        return treeArray;
     }
 }

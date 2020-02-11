@@ -19,7 +19,6 @@ public class JerseyApplication extends ResourceConfig {
 
     @Bean
     public Client createClient() {
-        Client client = ClientBuilder.newClient(new ClientConfig().register(EndpointImpl.class ));
-        return client;
+        return ClientBuilder.newClient(new ClientConfig().register(EndpointImpl.class));
     }
 }

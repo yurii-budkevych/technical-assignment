@@ -13,8 +13,9 @@ public class CountNearbyTreesResponseBuilder {
     public static final String NO_DATA = "no data";
 
     public Response prepareResponse(Map<String, Integer> treeData) {
-        Response response = Response.status(Response.Status.OK).entity(toJSONObject(treeData).toString()).build();
-        return response;
+        return Response.status(Response.Status.OK)
+                .entity(toJSONObject(treeData).toString())
+                .build();
     }
 
     private JSONObject toJSONObject(Map<String, Integer> treeData) {
