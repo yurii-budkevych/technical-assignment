@@ -1,4 +1,4 @@
-package com.technical.assignment.demo.service.rest;
+package com.technical.assignment.demo.controller.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

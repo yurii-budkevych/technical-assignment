@@ -2,7 +2,7 @@ package com.technical.assignment.demo.storage;
 
 import com.technical.assignment.demo.dto.TreeData;
 
-public interface DataStorage {
+public interface TreeDataStorage {
     void saveData(TreeData[] treeDataArray);
     TreeData[] getData();
 }

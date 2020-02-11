@@ -4,9 +4,9 @@ import com.technical.assignment.demo.dto.TreeData;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DataStorageImpl implements DataStorage {
+public class TreeDataStorageImpl implements TreeDataStorage {
 
-    TreeData[] treeDataArray;
+    private TreeData[] treeDataArray;
 
     public void saveData(TreeData[] treeDataArray) {
         this.treeDataArray = treeDataArray;

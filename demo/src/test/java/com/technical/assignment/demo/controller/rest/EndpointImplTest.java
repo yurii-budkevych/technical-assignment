@@ -1,8 +1,7 @@
-package com.technical.assignment.demo.service.rest;
+package com.technical.assignment.demo.controller.rest;
 
 import com.technical.assignment.demo.dto.TreeData;
-import com.technical.assignment.demo.storage.DataStorage;
-import org.junit.Before;
+import com.technical.assignment.demo.storage.TreeDataStorage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ class EndpointImplTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private DataStorage dataStorage;
+    private TreeDataStorage treeDataStorage;
 
     private TreeData[] test_suit_one;
 
@@ -42,7 +41,7 @@ class EndpointImplTest {
 
     @Test
     public void nearbyTreesShouldReturnExpectedData() throws Exception {
-        dataStorage.saveData(new TreeData[]{new TreeData("Norway maple", 100d, 100d)});
+        treeDataStorage.saveData(new TreeData[]{new TreeData("Norway maple", 100d, 100d)});
 
         assertThat(restTemplate.getForObject("http://localhost:" + port + "service/nearby-trees?X=100&Y=100&radius=1",
                 String.class)).contains("Norway maple");
@@ -50,7 +49,7 @@ class EndpointImplTest {
 
     @Test
     public void nearbyTreesShouldReturnExpectedData2() throws Exception {
-        dataStorage.saveData(test_suit_one);
+        treeDataStorage.saveData(test_suit_one);
 
         assertThat(restTemplate.getForObject("http://localhost:" + port + "service/nearby-trees?X=100&Y=100&radius=100",
                 String.class)).contains("{\"Japanese zelkova\":1,\"Norway maple\":1,\"northern red oak\":1}");

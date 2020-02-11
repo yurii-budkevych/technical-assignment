@@ -1,6 +1,6 @@
 package com.technical.assignment.demo;
 
-import com.technical.assignment.demo.service.rest.EndpointImpl;
+import com.technical.assignment.demo.controller.rest.EndpointImpl;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Bean;
