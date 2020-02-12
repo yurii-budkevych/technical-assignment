@@ -1,5 +1,5 @@
 package com.technical.assignment.demo.service;
 
-public interface TreeDataRequester {
+public interface TreeDataCrawler {
     void requestData();
 }

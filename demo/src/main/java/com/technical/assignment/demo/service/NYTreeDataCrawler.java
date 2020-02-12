@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Service
-public class NYTreeDataRequester implements TreeDataRequester {
+public class NYTreeDataCrawler implements TreeDataCrawler {
 
     @Value("${cityofnewyork.resource.path}")
     public String CITYOFNEWYORK_RESOURCE_PATH ;
