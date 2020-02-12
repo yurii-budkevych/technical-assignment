@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 import java.util.Map;
 
 @Service
-public class CountNearbyTreesResponseBuilder {
+public class TreeCounterResponseBuilder {
 
     public static final String INFO = "info";
     public static final String NO_DATA = "no data";

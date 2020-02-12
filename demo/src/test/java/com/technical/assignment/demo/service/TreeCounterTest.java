@@ -13,9 +13,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Map;
 
 @RunWith(MockitoJUnitRunner.class)
-class TreeCountingUsecaseTest {
+class TreeCounterTest {
 
-    TreeCountingUsecase treeCountingUsecase;
+    TreeCounter treeCounter;
 
     TreeDataStorage treeDataStorage;
     Tree[] test_suit_one;
@@ -24,7 +24,7 @@ class TreeCountingUsecaseTest {
     @BeforeEach
     void setUp() {
         treeDataStorage = new TreeDataStorageImpl();
-        treeCountingUsecase = new TreeCountingUsecase(treeDataStorage);
+        treeCounter = new TreeCounter(treeDataStorage);
 
         test_suit_one = new Tree[]{new Tree("Norway maple",100d,100d),
                 new Tree("northern red oak",50d,50d),
@@ -38,29 +38,29 @@ class TreeCountingUsecaseTest {
     @Test
     void countNearbyTreesByTypesShouldFindCorrectNumberOfTrees() {
         treeDataStorage.saveData(test_suit_one);
-        Map<String, Integer> nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 10d);
+        Map<String, Integer> nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 10d);
         Assert.assertEquals(1, nearbyTrees.size());
-        nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 25d);
+        nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 25d);
         Assert.assertEquals(2, nearbyTrees.size());
-        nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 50d);
+        nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 50d);
         Assert.assertEquals(3, nearbyTrees.size());
     }
 
     @Test
     void countNearbyTreesByTypesShouldFindCorrectNameOfTrees() {
         treeDataStorage.saveData(test_suit_one);
-        Map<String, Integer> nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 10d);
+        Map<String, Integer> nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 10d);
         Assert.assertTrue(nearbyTrees.containsKey("Norway maple"));
-        nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 25d);
+        nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 25d);
         Assert.assertTrue(nearbyTrees.containsKey("northern red oak"));
-        nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 50d);
+        nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 50d);
         Assert.assertTrue(nearbyTrees.containsKey("Japanese zelkova"));
     }
 
     @Test
     void countNearbyTreesByTypesShouldFindCorrectCountOfTrees() {
         treeDataStorage.saveData(test_suit_two);
-        Map<String, Integer> nearbyTrees = treeCountingUsecase.countNearbyTreesByTypes(100d, 100d, 100d);
+        Map<String, Integer> nearbyTrees = treeCounter.countNearbyTreesByTypes(100d, 100d, 100d);
         Assert.assertEquals(3, (int) nearbyTrees.get("Norway maple"));
     }
 }

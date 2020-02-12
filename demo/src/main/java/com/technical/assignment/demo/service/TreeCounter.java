@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class TreeCountingUsecase {
+public class TreeCounter {
 
     private final TreeDataStorage treeDataStorage;
 
-    public TreeCountingUsecase(@Autowired TreeDataStorage treeDataStorage) {
+    public TreeCounter(@Autowired TreeDataStorage treeDataStorage) {
         this.treeDataStorage = treeDataStorage;
     }
 
